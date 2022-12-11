@@ -41,7 +41,7 @@ public class QuizActivity extends AppCompatActivity{
     AnimationDrawable anim;
 
     CountDownTimer countDownTimer;
-    int timeValue = 130;
+    int timeValue = 60;
 
     TimerDialog timerDialog;
 
@@ -89,7 +89,7 @@ public class QuizActivity extends AppCompatActivity{
         correctAnsAnimation = AnimationUtils.loadAnimation(this,R.anim.right_ans_animation);
         correctAnsAnimation.setRepeatCount(3);
 
-        countDownTimer = new CountDownTimer(32000,1000) {
+        countDownTimer = new CountDownTimer(3500,1000) {
             @Override
             public void onTick(long l) {
 
@@ -208,7 +208,7 @@ public class QuizActivity extends AppCompatActivity{
                                 finalQuizData();
                             }
                         }
-                    },2000);
+                    },500);
                 }else {
 
                     buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.red));
@@ -229,7 +229,7 @@ public class QuizActivity extends AppCompatActivity{
                                 buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
                             }
                         }
-                    },2000);
+                    },500);
                     handler2.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -239,9 +239,9 @@ public class QuizActivity extends AppCompatActivity{
                                 finalQuizData();
                             }
                         }
-                    },3000);}
+                    },500);}
             }
-        },5000);
+        },1000);
     }
 
     public void buttonB(View view) {
@@ -283,7 +283,7 @@ public class QuizActivity extends AppCompatActivity{
                             }
 
                         }
-                    },2000);
+                    },500);
 
                 }else {
 
@@ -307,7 +307,7 @@ public class QuizActivity extends AppCompatActivity{
                             }
 
                         }
-                    },2000);
+                    },500);
 
 
                     handler2.postDelayed(new Runnable() {
@@ -322,13 +322,13 @@ public class QuizActivity extends AppCompatActivity{
                             }
 
                         }
-                    },3000);
+                    },500);
 
                 }
 
 
             }
-        },5000);
+        },1000);
 
 
     }
@@ -372,7 +372,7 @@ public class QuizActivity extends AppCompatActivity{
                             }
 
                         }
-                    },2000);
+                    },500);
 
                 }else {
 
@@ -396,7 +396,7 @@ public class QuizActivity extends AppCompatActivity{
                             }
 
                         }
-                    },2000);
+                    },500);
 
 
                     handler2.postDelayed(new Runnable() {
@@ -411,13 +411,13 @@ public class QuizActivity extends AppCompatActivity{
                             }
 
                         }
-                    },3000);
+                    },500);
 
                 }
 
 
             }
-        },5000);
+        },1000);
 
 
 
@@ -462,7 +462,7 @@ public class QuizActivity extends AppCompatActivity{
                             }
 
                         }
-                    },2000);
+                    },500);
 
                 }else {
 
@@ -488,7 +488,7 @@ public class QuizActivity extends AppCompatActivity{
                             }
 
                         }
-                    },2000);
+                    },500);
 
 
                     handler2.postDelayed(new Runnable() {
@@ -503,13 +503,13 @@ public class QuizActivity extends AppCompatActivity{
                             }
 
                         }
-                    },3000);
+                    },500);
 
                 }
 
 
             }
-        },5000);
+        },1000);
 
 
     }
