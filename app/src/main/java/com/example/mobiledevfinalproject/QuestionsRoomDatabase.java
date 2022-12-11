@@ -14,9 +14,6 @@ public abstract class QuestionsRoomDatabase {
 
 
     public abstract QuestionsDao wordDao();
-
-
-
     public static synchronized QuestionsRoomDatabase getInstance(final Context context){
 
         if (INSTANCE == null){
@@ -26,7 +23,6 @@ public abstract class QuestionsRoomDatabase {
                     .addCallback(RoomDBCallback)
                     .build();
         }
-
         return INSTANCE;
     }
 
@@ -34,18 +30,13 @@ public abstract class QuestionsRoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-
             new PopulateDbAsyncTask(INSTANCE).execute();
-
         }
     };
 
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void,Void,Void>{
-
-
         private QuestionsDao wordDao;
-
 
         private PopulateDbAsyncTask(QuestionsRoomDatabase db)
         {
@@ -53,8 +44,6 @@ public abstract class QuestionsRoomDatabase {
         }
         @Override
         protected Void doInBackground(Void... voids) {
-
-
             wordDao.insert(new Questions(" API 21 is for what ?","Lollipop","Nought","Oreo","Android","Lollipop"));
             wordDao.insert(new Questions(" PC full is ? ","Lollipop","Personal Computer","Oreo","Android","Personal Computer"));
             wordDao.insert(new Questions(" Firefox is what ?","Virus","Nought","Browser","Android","Browser"));
