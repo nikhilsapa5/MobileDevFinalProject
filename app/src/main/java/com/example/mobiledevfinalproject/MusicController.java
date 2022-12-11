@@ -3,7 +3,6 @@ package com.example.mobiledevfinalproject;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 
@@ -28,44 +27,42 @@ public class MusicController extends Application {
 
     private void mediaPlayerIntilizer() {
 
-        try{
-            player = MediaPlayer.create(getAppContext(),R.raw.background_music);
+        try {
+            player = MediaPlayer.create(getAppContext(), R.raw.background_music);
             player.setAudioStreamType(AudioManager.STREAM_MUSIC);
             player.setLooping(true);
-            player.setVolume(1f,1f);
+            player.setVolume(1f, 1f);
 
-        }catch (IllegalStateException e){
+        } catch (IllegalStateException e) {
             e.printStackTrace();
         }
 
 
-
     }
 
-    private static void setContext(Context context){
+    private static void setContext(Context context) {
         mContext = context;
 
     }
 
-    private static Context getAppContext(){
+    private static Context getAppContext() {
         return mContext;
     }
 
-    public static void playSound(){
+    public static void playSound() {
 
         try {
 
             if (SettingPreference.getMusicEnableDisable(mContext) && !player.isPlaying()) {
                 player.start();
             }
-        }
-        catch (IllegalStateException e){
+        } catch (IllegalStateException e) {
             e.printStackTrace();
         }
     }
 
-    public static void StopSound(){
-        if (player.isPlaying()){
+    public static void StopSound() {
+        if (player.isPlaying()) {
             player.pause();
         }
     }

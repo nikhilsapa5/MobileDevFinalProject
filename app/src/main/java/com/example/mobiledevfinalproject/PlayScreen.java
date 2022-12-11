@@ -14,7 +14,8 @@ public class PlayScreen extends AppCompatActivity {
 
     private static Context context;
 
-    Button btPlayQuiz,btSettings;
+    Button btPlayQuiz, btSettings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,21 +29,20 @@ public class PlayScreen extends AppCompatActivity {
         MusicController.currentActivity = this;
 
 
-        if (SettingPreference.getMusicEnableDisable(context)){
+        if (SettingPreference.getMusicEnableDisable(context)) {
             try {
                 MusicController.playSound();
-            }catch (IllegalStateException e){
+            } catch (IllegalStateException e) {
                 e.printStackTrace();
             }
         }
-
 
 
         btSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent settingIntent = new Intent(PlayScreen.this,Settings.class);
+                Intent settingIntent = new Intent(PlayScreen.this, Settings.class);
                 startActivity(settingIntent);
 
 
@@ -50,12 +50,11 @@ public class PlayScreen extends AppCompatActivity {
         });
 
 
-
         btPlayQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent playquizIntent = new Intent(PlayScreen.this,QuizActivity.class);
+                Intent playquizIntent = new Intent(PlayScreen.this, QuizActivity.class);
                 startActivity(playquizIntent);
 
             }

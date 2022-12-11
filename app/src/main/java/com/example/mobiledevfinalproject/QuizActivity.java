@@ -19,10 +19,9 @@ import androidx.lifecycle.ViewModelProviders;
 import java.util.Collections;
 import java.util.List;
 
-public class QuizActivity extends AppCompatActivity{
-    Button buttonA,buttonB,buttonC,buttonD;
-    TextView questionText,txtTotalQuestion,timeText,txtCoin,txtCorrect,txtWrong;
-
+public class QuizActivity extends AppCompatActivity {
+    Button buttonA, buttonB, buttonC, buttonD;
+    TextView questionText, txtTotalQuestion, timeText, txtCoin, txtCorrect, txtWrong;
 
 
     private QuestionsViewModel questionsViewModelob;
@@ -83,13 +82,13 @@ public class QuizActivity extends AppCompatActivity{
 
         playSound = new PlaySound(this);
 
-        shakeAnimation = AnimationUtils.loadAnimation(this,R.anim.incorrect_animation);
+        shakeAnimation = AnimationUtils.loadAnimation(this, R.anim.incorrect_animation);
         shakeAnimation.setRepeatCount(3);
 
-        correctAnsAnimation = AnimationUtils.loadAnimation(this,R.anim.right_ans_animation);
+        correctAnsAnimation = AnimationUtils.loadAnimation(this, R.anim.right_ans_animation);
         correctAnsAnimation.setRepeatCount(3);
 
-        countDownTimer = new CountDownTimer(3500,1000) {
+        countDownTimer = new CountDownTimer(3500, 1000) {
             @Override
             public void onTick(long l) {
 
@@ -99,7 +98,7 @@ public class QuizActivity extends AppCompatActivity{
                 timeValue -= 1;
 
 
-                if (timeValue == -1){
+                if (timeValue == -1) {
 
                     disableButtons();
 
@@ -117,7 +116,6 @@ public class QuizActivity extends AppCompatActivity{
         }.start();
 
 
-
         questionsViewModelob = ViewModelProviders.of(this).get(QuestionsViewModel.class);
         questionsViewModelob.getAllQuestions().observe(this, new Observer<List<Questions>>() {
             @Override
@@ -127,7 +125,7 @@ public class QuizActivity extends AppCompatActivity{
         });
     }
 
-    private void fetchQuestions(List<Questions> questions){
+    private void fetchQuestions(List<Questions> questions) {
         list = questions;
         Collections.shuffle(list);
         currentQuestion = list.get(qid);
@@ -136,10 +134,10 @@ public class QuizActivity extends AppCompatActivity{
 
     private void updateQueAnsOptions() {
 
-        buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.buttonBG));
-        buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.buttonBG));
-        buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.buttonBG));
-        buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.buttonBG));
+        buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.buttonBG));
+        buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.buttonBG));
+        buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.buttonBG));
+        buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.buttonBG));
         questionText.setText(currentQuestion.getQuestion());
         buttonA.setText(currentQuestion.getOptA());
         buttonB.setText(currentQuestion.getOptB());
@@ -149,7 +147,7 @@ public class QuizActivity extends AppCompatActivity{
         countDownTimer.start();
     }
 
-    private void SetNewQuestion(){
+    private void SetNewQuestion() {
         qid++;
         txtTotalQuestion.setText(qid + "/" + sizeOfQuiz);
         currentQuestion = list.get(qid);
@@ -158,12 +156,12 @@ public class QuizActivity extends AppCompatActivity{
     }
 
 
-    private void correctAns(int correct){
+    private void correctAns(int correct) {
         txtCorrect.setText(String.valueOf(correct));
     }
 
 
-    private void wrongAns(int wrong){
+    private void wrongAns(int wrong) {
         txtWrong.setText(String.valueOf(wrong));
     }
 
@@ -183,9 +181,9 @@ public class QuizActivity extends AppCompatActivity{
             @Override
             public void run() {
 
-                if (currentQuestion.getOptA().equals(currentQuestion.getAnswer())){
+                if (currentQuestion.getOptA().equals(currentQuestion.getAnswer())) {
 
-                    buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
+                    buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
                     buttonA.startAnimation(correctAnsAnimation);
                     correct++;
                     correctAns(correct);
@@ -200,18 +198,18 @@ public class QuizActivity extends AppCompatActivity{
                         @Override
                         public void run() {
 
-                            if (qid!= sizeOfQuiz){
+                            if (qid != sizeOfQuiz) {
 
                                 SetNewQuestion();
 
-                            }else {
+                            } else {
                                 finalQuizData();
                             }
                         }
-                    },500);
-                }else {
+                    }, 500);
+                } else {
 
-                    buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.red));
+                    buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.red));
                     buttonA.startAnimation(shakeAnimation);
                     wrong++;
                     wrongAns(wrong);
@@ -221,27 +219,28 @@ public class QuizActivity extends AppCompatActivity{
                     handler3.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            if (currentQuestion.getOptB().equals(currentQuestion.getAnswer())){
-                                buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
-                            }else if(currentQuestion.getOptC().equals(currentQuestion.getAnswer())) {
-                                buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
-                            }else {
-                                buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
+                            if (currentQuestion.getOptB().equals(currentQuestion.getAnswer())) {
+                                buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
+                            } else if (currentQuestion.getOptC().equals(currentQuestion.getAnswer())) {
+                                buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
+                            } else {
+                                buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
                             }
                         }
-                    },500);
+                    }, 500);
                     handler2.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            if (qid!= sizeOfQuiz){
+                            if (qid != sizeOfQuiz) {
                                 SetNewQuestion();
-                            }else {
+                            } else {
                                 finalQuizData();
                             }
                         }
-                    },500);}
+                    }, 500);
+                }
             }
-        },1000);
+        }, 1000);
     }
 
     public void buttonB(View view) {
@@ -259,9 +258,9 @@ public class QuizActivity extends AppCompatActivity{
             @Override
             public void run() {
 
-                if (currentQuestion.getOptB().equals(currentQuestion.getAnswer())){
+                if (currentQuestion.getOptB().equals(currentQuestion.getAnswer())) {
 
-                    buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
+                    buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
                     buttonB.startAnimation(correctAnsAnimation);
                     correct++;
                     correctAns(correct);
@@ -273,21 +272,21 @@ public class QuizActivity extends AppCompatActivity{
                         @Override
                         public void run() {
 
-                            if (qid!= sizeOfQuiz){
+                            if (qid != sizeOfQuiz) {
 
                                 SetNewQuestion();
 
-                            }else {
+                            } else {
                                 finalQuizData();
 
                             }
 
                         }
-                    },500);
+                    }, 500);
 
-                }else {
+                } else {
 
-                    buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.red));
+                    buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.red));
                     buttonB.startAnimation(shakeAnimation);
                     wrong++;
                     wrongAns(wrong);
@@ -298,37 +297,37 @@ public class QuizActivity extends AppCompatActivity{
                         @Override
                         public void run() {
 
-                            if (currentQuestion.getOptA().equals(currentQuestion.getAnswer())){
-                                buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
-                            }else if(currentQuestion.getOptC().equals(currentQuestion.getAnswer())) {
-                                buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
-                            }else {
-                                buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
+                            if (currentQuestion.getOptA().equals(currentQuestion.getAnswer())) {
+                                buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
+                            } else if (currentQuestion.getOptC().equals(currentQuestion.getAnswer())) {
+                                buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
+                            } else {
+                                buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
                             }
 
                         }
-                    },500);
+                    }, 500);
 
 
                     handler2.postDelayed(new Runnable() {
                         @Override
                         public void run() {
 
-                            if (qid!= sizeOfQuiz){
+                            if (qid != sizeOfQuiz) {
                                 SetNewQuestion();
-                            }else {
+                            } else {
                                 finalQuizData();
 
                             }
 
                         }
-                    },500);
+                    }, 500);
 
                 }
 
 
             }
-        },1000);
+        }, 1000);
 
 
     }
@@ -348,9 +347,9 @@ public class QuizActivity extends AppCompatActivity{
             @Override
             public void run() {
 
-                if (currentQuestion.getOptC().equals(currentQuestion.getAnswer())){
+                if (currentQuestion.getOptC().equals(currentQuestion.getAnswer())) {
 
-                    buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
+                    buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
                     buttonC.startAnimation(correctAnsAnimation);
                     correct++;
                     correctAns(correct);
@@ -362,21 +361,21 @@ public class QuizActivity extends AppCompatActivity{
                         @Override
                         public void run() {
 
-                            if (qid!= sizeOfQuiz){
+                            if (qid != sizeOfQuiz) {
 
                                 SetNewQuestion();
 
-                            }else {
+                            } else {
                                 finalQuizData();
 
                             }
 
                         }
-                    },500);
+                    }, 500);
 
-                }else {
+                } else {
 
-                    buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.red));
+                    buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.red));
                     buttonC.startAnimation(shakeAnimation);
                     wrong++;
                     wrongAns(wrong);
@@ -387,38 +386,37 @@ public class QuizActivity extends AppCompatActivity{
                         @Override
                         public void run() {
 
-                            if (currentQuestion.getOptB().equals(currentQuestion.getAnswer())){
-                                buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
-                            }else if(currentQuestion.getOptA().equals(currentQuestion.getAnswer())) {
-                                buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
-                            }else {
-                                buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
+                            if (currentQuestion.getOptB().equals(currentQuestion.getAnswer())) {
+                                buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
+                            } else if (currentQuestion.getOptA().equals(currentQuestion.getAnswer())) {
+                                buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
+                            } else {
+                                buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
                             }
 
                         }
-                    },500);
+                    }, 500);
 
 
                     handler2.postDelayed(new Runnable() {
                         @Override
                         public void run() {
 
-                            if (qid!= sizeOfQuiz){
+                            if (qid != sizeOfQuiz) {
                                 SetNewQuestion();
-                            }else {
+                            } else {
                                 finalQuizData();
 
                             }
 
                         }
-                    },500);
+                    }, 500);
 
                 }
 
 
             }
-        },1000);
-
+        }, 1000);
 
 
     }
@@ -438,9 +436,9 @@ public class QuizActivity extends AppCompatActivity{
             @Override
             public void run() {
 
-                if (currentQuestion.getOptD().equals(currentQuestion.getAnswer())){
+                if (currentQuestion.getOptD().equals(currentQuestion.getAnswer())) {
 
-                    buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
+                    buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
                     buttonD.startAnimation(correctAnsAnimation);
                     correct++;
                     correctAns(correct);
@@ -452,21 +450,21 @@ public class QuizActivity extends AppCompatActivity{
                         @Override
                         public void run() {
 
-                            if (qid!= sizeOfQuiz){
+                            if (qid != sizeOfQuiz) {
 
                                 SetNewQuestion();
 
-                            }else {
+                            } else {
                                 finalQuizData();
 
                             }
 
                         }
-                    },500);
+                    }, 500);
 
-                }else {
+                } else {
 
-                    buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.red));
+                    buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.red));
                     buttonD.startAnimation(shakeAnimation);
                     wrong++;
                     wrongAns(wrong);
@@ -479,37 +477,37 @@ public class QuizActivity extends AppCompatActivity{
                         @Override
                         public void run() {
 
-                            if (currentQuestion.getOptB().equals(currentQuestion.getAnswer())){
-                                buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
-                            }else if(currentQuestion.getOptC().equals(currentQuestion.getAnswer())) {
-                                buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
-                            }else {
-                                buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
+                            if (currentQuestion.getOptB().equals(currentQuestion.getAnswer())) {
+                                buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
+                            } else if (currentQuestion.getOptC().equals(currentQuestion.getAnswer())) {
+                                buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
+                            } else {
+                                buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
                             }
 
                         }
-                    },500);
+                    }, 500);
 
 
                     handler2.postDelayed(new Runnable() {
                         @Override
                         public void run() {
 
-                            if (qid!= sizeOfQuiz){
+                            if (qid != sizeOfQuiz) {
                                 SetNewQuestion();
-                            }else {
+                            } else {
                                 finalQuizData();
 
                             }
 
                         }
-                    },500);
+                    }, 500);
 
                 }
 
 
             }
-        },1000);
+        }, 1000);
 
 
     }
@@ -526,7 +524,7 @@ public class QuizActivity extends AppCompatActivity{
     protected void onDestroy() {
         super.onDestroy();
 
-        if (countDownTimer!=null){
+        if (countDownTimer != null) {
             countDownTimer.cancel();
         }
 
@@ -537,7 +535,7 @@ public class QuizActivity extends AppCompatActivity{
     @Override
     protected void onPause() {
         super.onPause();
-        if (countDownTimer!=null){
+        if (countDownTimer != null) {
             countDownTimer.cancel();
         }
     }
@@ -546,7 +544,7 @@ public class QuizActivity extends AppCompatActivity{
     protected void onStop() {
         super.onStop();
 
-        if (countDownTimer!=null){
+        if (countDownTimer != null) {
             countDownTimer.cancel();
         }
     }
@@ -556,7 +554,7 @@ public class QuizActivity extends AppCompatActivity{
     public void onBackPressed() {
         super.onBackPressed();
 
-        if (countDownTimer!=null){
+        if (countDownTimer != null) {
             countDownTimer.cancel();
             finish();
         }
@@ -564,7 +562,7 @@ public class QuizActivity extends AppCompatActivity{
     }
 
 
-    private void disableButtons(){
+    private void disableButtons() {
 
         buttonA.setEnabled(false);
         buttonB.setEnabled(false);
@@ -573,7 +571,7 @@ public class QuizActivity extends AppCompatActivity{
 
     }
 
-    private void enableButtons(){
+    private void enableButtons() {
         buttonA.setEnabled(true);
         buttonB.setEnabled(true);
         buttonC.setEnabled(true);
@@ -581,13 +579,13 @@ public class QuizActivity extends AppCompatActivity{
     }
 
 
-    private void finalQuizData(){
+    private void finalQuizData() {
 
-        Intent resultData = new Intent(QuizActivity.this,Result.class);
-        resultData.putExtra(Constants.COINS,coins);
-        resultData.putExtra(Constants.TOTAL_QUES,sizeOfQuiz);
-        resultData.putExtra(Constants.CORRECT,correct);
-        resultData.putExtra(Constants.WRONG,wrong);
+        Intent resultData = new Intent(QuizActivity.this, Result.class);
+        resultData.putExtra(Constants.COINS, coins);
+        resultData.putExtra(Constants.TOTAL_QUES, sizeOfQuiz);
+        resultData.putExtra(Constants.CORRECT, correct);
+        resultData.putExtra(Constants.WRONG, wrong);
         startActivity(resultData);
 
 

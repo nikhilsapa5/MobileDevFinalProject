@@ -1,5 +1,4 @@
 package com.example.mobiledevfinalproject;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,10 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class Result extends AppCompatActivity {
 
     TextView txtpreviousCoins;
-    TextView txtTotalQuizQues,txtCorrectQues,txtWrongQues;
+    TextView txtTotalQuizQues, txtCorrectQues, txtWrongQues;
 
     Button btStartTrivaQuiz;
     Button btPlayScreen;
@@ -32,10 +33,10 @@ public class Result extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        int coins = intent.getIntExtra(Constants.COINS,0);
-        int totalQues = intent.getIntExtra(Constants.TOTAL_QUES,0);
-        int correctQues = intent.getIntExtra(Constants.CORRECT,0);
-        int wrongQues = intent.getIntExtra(Constants.WRONG,0);
+        int coins = intent.getIntExtra(Constants.COINS, 0);
+        int totalQues = intent.getIntExtra(Constants.TOTAL_QUES, 0);
+        int correctQues = intent.getIntExtra(Constants.CORRECT, 0);
+        int wrongQues = intent.getIntExtra(Constants.WRONG, 0);
 
 
         txtpreviousCoins.setText(Constants.COINS + String.valueOf(coins));
@@ -44,11 +45,10 @@ public class Result extends AppCompatActivity {
         txtWrongQues.setText(Constants.WRONG + String.valueOf(wrongQues));
 
 
-
         btPlayScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Result.this,PlayScreen.class);
+                Intent intent = new Intent(Result.this, PlayScreen.class);
                 startActivity(intent);
             }
         });
@@ -56,7 +56,7 @@ public class Result extends AppCompatActivity {
         btStartTrivaQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Result.this,QuizActivity.class);
+                Intent intent = new Intent(Result.this, QuizActivity.class);
                 startActivity(intent);
             }
         });

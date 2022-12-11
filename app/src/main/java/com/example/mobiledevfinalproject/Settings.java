@@ -28,7 +28,7 @@ public class Settings extends AppCompatActivity {
 
     }
 
-    private void initViews(){
+    private void initViews() {
 
         mMusicCheckBox = findViewById(R.id.music_checkbox);
         mMusicCheckBox.setChecked(true);
@@ -44,12 +44,11 @@ public class Settings extends AppCompatActivity {
         });
 
 
-
     }
 
     private void goToPlayScreen() {
 
-        Intent intentSetting = new Intent(Settings.this,PlayScreen.class);
+        Intent intentSetting = new Intent(Settings.this, PlayScreen.class);
         startActivity(intentSetting);
 
     }
@@ -57,17 +56,17 @@ public class Settings extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intentSetting = new Intent(Settings.this,PlayScreen.class);
+        Intent intentSetting = new Intent(Settings.this, PlayScreen.class);
         startActivity(intentSetting);
     }
 
     public void viewClickHandler(View view) {
 
-        switch (view.getId()){
+        switch (view.getId()) {
 
             case R.id.music_checkbox:
 
-               switchMusicEnableDisable();
+                switchMusicEnableDisable();
 
                 break;
 
@@ -78,11 +77,11 @@ public class Settings extends AppCompatActivity {
     private void switchMusicEnableDisable() {
 
         isMusicOn = !isMusicOn;
-        if (isMusicOn){
-            SettingPreference.setMusicEnableDisable(mContext,true);
+        if (isMusicOn) {
+            SettingPreference.setMusicEnableDisable(mContext, true);
             MusicController.playSound();
-        }else {
-            SettingPreference.setMusicEnableDisable(mContext,false);
+        } else {
+            SettingPreference.setMusicEnableDisable(mContext, false);
             StopSound();
         }
 
@@ -92,10 +91,10 @@ public class Settings extends AppCompatActivity {
 
     private void populateMusic() {
 
-        if (SettingPreference.getMusicEnableDisable(mContext)){
+        if (SettingPreference.getMusicEnableDisable(mContext)) {
             MusicController.playSound();
             mMusicCheckBox.setChecked(true);
-        }else {
+        } else {
             StopSound();
             mMusicCheckBox.setChecked(false);
         }

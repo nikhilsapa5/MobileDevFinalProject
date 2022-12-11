@@ -3,12 +3,20 @@
     android:interpolator="@android:anim/decelerate_interpolator">
 
 
-    <translate android:fromXDelta="0" android:toXDelta="-2%p"
-        android:duration="50"/>
+    <translate
+        android:fromXDelta="0"
+        android:toXDelta="-2%p"
+        android:duration="50" />
 
-    <translate android:fromXDelta="-2%p" android:toXDelta="2%p"
-        android:duration="50" android:startOffset="50"/>
+    <translate
+        android:fromXDelta="-2%p"
+        android:toXDelta="2%p"
+        android:duration="50"
+        android:startOffset="50" />
 
-    <translate android:fromXDelta="2%p" android:toXDelta="-2%p"
-        android:duration="50" android:startOffset="100"/>
+    <translate
+        android:fromXDelta="2%p"
+        android:toXDelta="-2%p"
+        android:duration="50"
+        android:startOffset="100" />
 </set>

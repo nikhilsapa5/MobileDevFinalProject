@@ -9,14 +9,14 @@ public class PlaySound {
     private MediaPlayer mediaPlayer;
 
 
-    public PlaySound(Context mContext){
+    public PlaySound(Context mContext) {
         this.mContext = mContext;
     }
 
 
-    public void seAudioforAnswers(int flag){
+    public void seAudioforAnswers(int flag) {
 
-        switch (flag){
+        switch (flag) {
 
             case 1:
                 int correctAudio = R.raw.correct;
@@ -39,9 +39,9 @@ public class PlaySound {
     }
 
 
-    private void playMusic(int audiofile){
+    private void playMusic(int audiofile) {
 
-        mediaPlayer = MediaPlayer.create(mContext,audiofile);
+        mediaPlayer = MediaPlayer.create(mContext, audiofile);
         mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {

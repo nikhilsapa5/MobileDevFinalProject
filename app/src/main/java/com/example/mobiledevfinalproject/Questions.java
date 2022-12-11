@@ -33,7 +33,7 @@ public class Questions {
 
     public Questions() {
         id = 0;
-        question="";
+        question = "";
         optA = "";
         optB = "";
         optC = "";

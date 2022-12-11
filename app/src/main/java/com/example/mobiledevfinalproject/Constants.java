@@ -10,5 +10,4 @@ public class Constants {
     public static final String TOTAL_QUES = "Toatal Ques : ";
 
 
-
 }
