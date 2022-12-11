@@ -1,4 +1,5 @@
 package com.example.mobiledevfinalproject;
+
 import android.content.Context;
 import android.os.AsyncTask;
 
@@ -9,7 +10,7 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 @Database(entities = {Questions.class},version = 2)
-public abstract class QuestionsRoomDatabase {
+public abstract class QuestionsRoomDatabase extends androidx.room.RoomDatabase{
     private static QuestionsRoomDatabase INSTANCE;
 
 
@@ -26,7 +27,7 @@ public abstract class QuestionsRoomDatabase {
         return INSTANCE;
     }
 
-    private static Callback RoomDBCallback = new Callback() {
+    private static RoomDatabase.Callback RoomDBCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
@@ -52,11 +53,9 @@ public abstract class QuestionsRoomDatabase {
             wordDao.insert(new Questions("Which of the following is a chat engine?","Google Bol","Yahoo Talk","Rediif Messenger","None of these","None of these"));
             wordDao.insert(new Questions("Which of the following is an input device?","Plotter","Printer","Monitor","Scanner","Scanner"));
             wordDao.insert(new Questions("HTML is used to create -","Operating System","High Level Program","Web-Server","Web Page","Web Page"));
-
             wordDao.insert(new Questions("Which is the fastest memory in computer","RAM","ROM","Cache","Hard Drive","Cache"));
             wordDao.insert(new Questions("What is the name for a webpage address? ","Directory","Protocol","URL","Domain","URL"));
             wordDao.insert(new Questions("Which of the following is not an input device?","Microphone","Keyboard","Mozilla firefox","Mouse","Mozilla firefox"));
-
             return null;
         }
     }
