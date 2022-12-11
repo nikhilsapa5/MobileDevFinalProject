@@ -17,14 +17,14 @@ public class Settings extends AppCompatActivity {
     private Switch mMusicCheckBox;
     private Button ok_btn;
     private boolean isMusicOn;
-    private Button aboutme;
 
-
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
         mContext = Settings.this;
         MusicController.currentActivity = this;
-
         initViews();
-
 
     }
 
