@@ -19,19 +19,7 @@ public class Settings extends AppCompatActivity {
     private boolean isMusicOn;
     private Button aboutme;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
-        aboutme = findViewById(R.id.aboutme);
-        aboutme.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent2 = new Intent(Settings.this, AboutMePage.class);
-                startActivity(intent2);
-                finish();
-            }
-        });
+
         mContext = Settings.this;
         MusicController.currentActivity = this;
 
