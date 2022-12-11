@@ -23,26 +23,22 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
-        mContext = Settings.this;
-        MusicController.currentActivity = this;
-
-        initViews();
         aboutme = findViewById(R.id.aboutme);
         aboutme.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
-                Intent intent2 = new Intent(AboutMePage.this, AboutMePage.class);
+                Intent intent2 = new Intent(Settings.this, AboutMePage.class);
                 startActivity(intent2);
                 finish();
             }
         });
+        mContext = Settings.this;
+        MusicController.currentActivity = this;
+
+        initViews();
+
 
     }
-
-
-
 
     private void initViews(){
 
