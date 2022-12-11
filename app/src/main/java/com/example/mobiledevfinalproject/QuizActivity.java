@@ -1,10 +1,5 @@
 package com.example.mobiledevfinalproject;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -15,6 +10,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import java.util.Collections;
 import java.util.List;
@@ -118,29 +118,20 @@ public class QuizActivity extends AppCompatActivity{
 
 
 
-
         questionsViewModelob = ViewModelProviders.of(this).get(QuestionsViewModel.class);
         questionsViewModelob.getAllQuestions().observe(this, new Observer<List<Questions>>() {
             @Override
             public void onChanged(List<Questions> questions) {
-
                 fetchQuestions(questions);
-
             }
         });
-
     }
 
     private void fetchQuestions(List<Questions> questions){
-
         list = questions;
-
         Collections.shuffle(list);
-
         currentQuestion = list.get(qid);
-
         updateQueAnsOptions();
-
     }
 
     private void updateQueAnsOptions() {
@@ -149,32 +140,21 @@ public class QuizActivity extends AppCompatActivity{
         buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.buttonBG));
         buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.buttonBG));
         buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.buttonBG));
-
         questionText.setText(currentQuestion.getQuestion());
         buttonA.setText(currentQuestion.getOptA());
         buttonB.setText(currentQuestion.getOptB());
         buttonC.setText(currentQuestion.getOptC());
         buttonD.setText(currentQuestion.getOptD());
-
-
         countDownTimer.cancel();
         countDownTimer.start();
-
-
     }
 
     private void SetNewQuestion(){
-
         qid++;
-
         txtTotalQuestion.setText(qid + "/" + sizeOfQuiz);
-
         currentQuestion = list.get(qid);
-
         enableButtons();
-
         updateQueAnsOptions();
-
     }
 
 
@@ -225,14 +205,10 @@ public class QuizActivity extends AppCompatActivity{
                                 SetNewQuestion();
 
                             }else {
-
                                 finalQuizData();
-
                             }
-
                         }
                     },2000);
-
                 }else {
 
                     buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.red));
@@ -245,7 +221,6 @@ public class QuizActivity extends AppCompatActivity{
                     handler3.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
                             if (currentQuestion.getOptB().equals(currentQuestion.getAnswer())){
                                 buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
                             }else if(currentQuestion.getOptC().equals(currentQuestion.getAnswer())) {
@@ -253,34 +228,20 @@ public class QuizActivity extends AppCompatActivity{
                             }else {
                                 buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.green));
                             }
-
                         }
                     },2000);
-
-
                     handler2.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
                             if (qid!= sizeOfQuiz){
                                 SetNewQuestion();
                             }else {
-
                                 finalQuizData();
-
                             }
-
                         }
-                    },3000);
-
-                }
-
-
+                    },3000);}
             }
         },5000);
-
-
-
     }
 
     public void buttonB(View view) {

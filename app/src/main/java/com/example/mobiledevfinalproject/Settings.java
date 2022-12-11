@@ -1,6 +1,6 @@
 package com.example.mobiledevfinalproject;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static com.example.mobiledevfinalproject.MusicController.StopSound;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 
-import static com.infowithvijay.triviaquizappwithroom.MusicController.StopSound;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Settings extends AppCompatActivity {
 
