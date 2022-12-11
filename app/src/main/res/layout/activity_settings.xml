@@ -55,7 +55,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/aboutme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

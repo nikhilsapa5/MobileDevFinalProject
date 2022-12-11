@@ -17,7 +17,7 @@ public class Settings extends AppCompatActivity {
     private Switch mMusicCheckBox;
     private Button ok_btn;
     private boolean isMusicOn;
-
+    private Button aboutme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,20 @@ public class Settings extends AppCompatActivity {
         MusicController.currentActivity = this;
 
         initViews();
+        aboutme = findViewById(R.id.aboutme);
+        aboutme.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(AboutMePage.this, AboutMePage.class);
+                startActivity(intent2);
+                finish();
+            }
+        });
 
     }
+
+
 
 
     private void initViews(){
