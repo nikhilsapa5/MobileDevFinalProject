@@ -46,17 +46,17 @@ public abstract class QuestionsRoomDatabase extends androidx.room.RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            wordDao.insert(new Questions(" API 21 is for what ?", "Lollipop", "Nought", "Oreo", "Android", "Lollipop"));
-            wordDao.insert(new Questions(" PC full is ? ", "Lollipop", "Personal Computer", "Oreo", "Android", "Personal Computer"));
-            wordDao.insert(new Questions(" Firefox is what ?", "Virus", "Nought", "Browser", "Android", "Browser"));
-            wordDao.insert(new Questions(" API 25 is for what ?", "Lollipop", "Nought", "Oreo", "Android", "Nought"));
+            wordDao.insert(new Questions(" Android is -", "an operating system", "a web browser", "a web server", "Apple's system", "an operating system"));
+            wordDao.insert(new Questions(" For which of the following Android is mainly developed? ", "Servers", "Desktops", "Laptops", "Mobile devices", "Mobile devices"));
+            wordDao.insert(new Questions(" Which of the following is the first mobile phone released that ran the Android OS?", "HTC Hero", "iPhone 4", "T - Mobile G1", "Google gPhone", "T - Mobile G1"));
+            wordDao.insert(new Questions(" APK stands for - ", "Android Phone Kit", "Android Page Kit", "Advance Power Kit", "Android Package Kit", "Android Package Kit"));
 
-            wordDao.insert(new Questions("Which of the following is a chat engine?", "Google Bol", "Yahoo Talk", "Rediif Messenger", "None of these", "None of these"));
-            wordDao.insert(new Questions("Which of the following is an input device?", "Plotter", "Printer", "Monitor", "Scanner", "Scanner"));
-            wordDao.insert(new Questions("HTML is used to create -", "Operating System", "High Level Program", "Web-Server", "Web Page", "Web Page"));
-            wordDao.insert(new Questions("Which is the fastest memory in computer", "RAM", "ROM", "Cache", "Hard Drive", "Cache"));
-            wordDao.insert(new Questions("What is the name for a webpage address? ", "Directory", "Protocol", "URL", "Domain", "URL"));
-            wordDao.insert(new Questions("Which of the following is not an input device?", "Microphone", "Keyboard", "Mozilla firefox", "Mouse", "Mozilla firefox"));
+            wordDao.insert(new Questions("What two words every programmer learned to code first?", "Stack Overflow", "Hello, world.", "pip install", "Text Editors", "Hello, world."));
+            wordDao.insert(new Questions("What is the most popular programming problem?", "Unit Test", "Print Statements", "Memory Error", "Missing a Semicolon", "Missing a Semicolon"));
+            wordDao.insert(new Questions("How many Infinity Stones are there?", "6", "Infinity ", "5", "8", "6"));
+            wordDao.insert(new Questions("Which section of Boston is home to Mike's Pastry, La Dolce Vita, and The Improv Asylum?", "Beacon Hill", "South End", "North End", "Fenway", "North End"));
+            wordDao.insert(new Questions("In what year was Fenway Park opened? ", "1988", "1912", "2003", "1956", "1912"));
+            wordDao.insert(new Questions("Boston was the first city with:", "Seaport", "Subway System", "McDonalds", "Zoo", "Subway System"));
             return null;
         }
     }
